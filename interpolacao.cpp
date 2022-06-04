@@ -95,7 +95,7 @@ system("cls");
 	cout <<"\n**** Matriz Inversa ****\n" <<"\n  | ";
 		
 	for(int i=0; i<(ordem*ordem); i++){	
-		cout<<setprecision(4)<<setw(4)<<matriz_inversa[i]<<" ";
+		cout<<setprecision(4)<<setw(5)<<matriz_inversa[i]<<" ";
 			if((i+1)%ordem==0){
 				cout<<"|\n";
 				if(i!=((ordem*ordem)-1)){
@@ -108,7 +108,7 @@ system("cls");
 
 	for(int i=0; i<(ordem); i++){
         cout<<"\n  | ";
-		cout<<setprecision(4)<<setw(6)<<matriz_pequena[i];
+		cout<<setprecision(4)<<setw(5)<<matriz_pequena[i];
 		cout<<"  | ";
 			
 		}
