@@ -7,10 +7,10 @@
 using namespace std;
 
 int main(){
-	int ordem, b, l=1;
-	float value;
+	int ordem, b, l=1, counter=0;
+	float value, soma=0;
 	
-	cout<<" Entre ordem da matriz :";
+	cout<<"\n\n    Entre ordem da matriz :";
 	cin>>ordem;
 	int c=1;
 	
@@ -22,60 +22,10 @@ int main(){
 	matriz_resultado = new float [ordem];
 
 	cout << "\n";
-
-	cout<<"\n Entre com valores da Matriz Original\n\n";
-	/*
-	for(int i=0; i<(ordem*ordem); i++){	
-
-		cout<<"o["<<l<<c<<"] : ";
-		//cout<<"entre numero :";
-		cin>>value;
-		matriz_original[i] = value;
-		c++;
-		if((i+1)%ordem==0){ //resetar numero da coluna para 1 (estetico)
-			l++; c=1;
-		}			
-	}
-	c=1;
-	l=1;
-
-	system("cls");
-
-	cout<<"\n Entre com valores da Matriz inversa\n\n";
-
-
+//0000000000000000000000000 Matriz Original 00000000000000000000000000000000000000000000000000
+	cout<<"\n**** Entre com valores da Matriz Original ****\n\n";
 	
-	for(int i=0; i<(ordem*ordem); i++){	
-
-		cout<<"i["<<l<<c<<"] : ";
-		//cout<<"entre numero :";
-		cin>>value;
-		matriz_inversa[i] = value;
-		c++;
-		if((i+1)%ordem==0){ //resetar numero da coluna para 1 (estetico)
-			l++; c=1;
-		}			
-	}
-
-	system("cls");
-
-	cout<<"\n Entre com valores da Matriz inversa\n\n";
-
-
-	for(int i=0; i<(ordem*ordem); i++){	
-
-		cout<<"i["<<l<<c<<"] : ";
-		//cout<<"entre numero :";
-		cin>>value;
-		matriz_inversa[i] = value;
-		c++;
-		if((i+1)%ordem==0){ //resetar numero da coluna para 1 (estetico)
-			l++; c=1;
-		}			
-	}
-	*/
-
-	cout << "\n    Digite o valor da base para linha " << l << " : ";
+    cout << "\n    Digite o valor da base para linha " << l << " : ";
 	cin>>value;
 
 	for(int i=1; i<(ordem*ordem); i++){	
@@ -86,7 +36,7 @@ int main(){
 
 		if((i)%ordem==0){ //resetar numero da coluna para 1 (estetico)
 			l++;
-			cout << "\n    Digite o valor da base para linha "<< l << " : ";
+			cout << "    Digite o valor da base para linha "<< l << " : ";
 			cin>>value;
 			c=1;
 		}
@@ -94,18 +44,45 @@ int main(){
 			matriz_original[i] = pow(value, (c-1));
 		}	
 	}
+//000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    c=1;
+	l=1;  
+//0000000000000000000000000000000000 Matriz inversa 0000000000000000000000000000000000000000000
 
+    cout<<"\n**** Entre com valores da Matriz inversa ****\n\n";
+    
+    for(int i=0; i<(ordem*ordem); i++){	
 
+		cout<<"  i["<<l<<c<<"] : ";
 
+		cin>>value;
+		matriz_inversa[i] = value;
+		c++;
+		if((i+1)%ordem==0){ //resetar numero da coluna para 1 (estetico)
+			l++; c=1;
+		}			
+	}
+    
+//000000000000000000000000000000000000 Matriz Y 00000000000000000000000000000000000000000000
+    l=1;
+    cout<<"\n**** Entre com valores da Matriz Y ****\n\n";
+    
+    for(int i=0; i<(ordem); i++){	
 
+		cout<<"  y["<<l<<1<<"] : ";
+		cin>>value;
+		matriz_pequena[i] = value;
+		l++;
+					
+	}
 
+//00000000000000000000000000000000000000000000000 Mostrar na Tela 0000000000000000000000000000000000000000000000000000000
+system("cls");
 
-
-
-	cout<<"\n  | ";
+	cout <<"\n\n**** Matriz original ****\n" <<"\n  | ";
 		
 	for(int i=0; i<(ordem*ordem); i++){	
-		cout<<setprecision(4)<<setw(6)<<matriz_original[i]<<" ";
+		cout<<setprecision(4)<<setw(4)<<matriz_original[i]<<" ";
 			if((i+1)%ordem==0){
 				cout<<"|\n";
 				if(i!=((ordem*ordem)-1)){
@@ -114,11 +91,11 @@ int main(){
 			}
 		}
 
-	/*
-	cout<<"\n  | ";
+	
+	cout <<"\n**** Matriz Inversa ****\n" <<"\n  | ";
 		
 	for(int i=0; i<(ordem*ordem); i++){	
-		cout<<setprecision(4)<<setw(6)<<matriz_inversa[i]<<" ";
+		cout<<setprecision(4)<<setw(4)<<matriz_inversa[i]<<" ";
 			if((i+1)%ordem==0){
 				cout<<"|\n";
 				if(i!=((ordem*ordem)-1)){
@@ -126,8 +103,50 @@ int main(){
 				}
 			}
 		}
-		*/
 
+	cout <<"\n**** Matriz Y ****\n";
+
+	for(int i=0; i<(ordem); i++){
+        cout<<"\n  | ";
+		cout<<setprecision(4)<<setw(6)<<matriz_pequena[i];
+		cout<<"  | ";
+			
+		}
+		
+//0000000000000000000000000000000000000 Fazendo Calculo Da Matriz Resultante 0000000000000000000000000000000000000000000000000000
+
+	for(int i=0; i<(ordem*ordem); i=i+3){	
+
+		for(int j=0; j<ordem; j++){
+        soma = soma + (matriz_inversa[i+j]*matriz_pequena[j]);
+    }
+
+		matriz_resultado[counter] = soma;
+        soma = 0;
+        counter++;
+	}
+
+
+//000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+    cout <<"\n\n****** Matriz Resultante ******\n";
+
+	for(int i=0; i<(ordem); i++){
+        cout<<"\n  | ";
+		cout<<setw(3)<<"a"<<i;
+		cout<<"  | ";
+
+        cout<<"  | ";
+		cout<<setprecision(4)<<setw(6)<<matriz_resultado[i];
+		cout<<"  | ";
+			
+		}
+cout<<"\n\n\n";
+
+
+//000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+//000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 	system ("pause");
     return 0;
