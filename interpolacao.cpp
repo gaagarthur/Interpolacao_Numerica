@@ -4,14 +4,13 @@
 #include<stdlib.h>
 #include<iomanip>
 
-using namespace std;
 
 int main(){
 	int ordem, b, l=1, counter=0;
 	float value, soma=0;
 	
-	cout<<"\n\n    Entre ordem da matriz :";
-	cin>>ordem;
+	std::cout<<"\n\n    Entre ordem da matriz :";
+	std::cin>>ordem;
 	int c=1;
 	
 	float *matriz_original,*matriz_inversa, *matriz_pequena, *matriz_resultado;
@@ -21,12 +20,12 @@ int main(){
 	matriz_pequena = new float [ordem];
 	matriz_resultado = new float [ordem];
 
-	cout << "\n";
+	std::cout << "\n";
 //0000000000000000000000000 Matriz Original 00000000000000000000000000000000000000000000000000
-	cout<<"\n**** Entre com valores da Matriz Original ****\n\n";
+	std::cout<<"\n**** Entre com valores da Matriz Original ****\n\n";
 	
-    cout << "\n    Digite o valor da base para linha " << l << " : ";
-	cin>>value;
+    std::cout << "\n    Digite o valor da base para linha " << l << " : ";
+	std::cin>>value;
 
 	for(int i=1; i<(ordem*ordem); i++){	
 
@@ -36,8 +35,8 @@ int main(){
 
 		if((i)%ordem==0){ //resetar numero da coluna para 1 (estetico)
 			l++;
-			cout << "    Digite o valor da base para linha "<< l << " : ";
-			cin>>value;
+			std::cout << "    Digite o valor da base para linha "<< l << " : ";
+			std::cin>>value;
 			c=1;
 		}
 		if((i+1) == ordem*ordem){
@@ -49,13 +48,13 @@ int main(){
 	l=1;  
 //0000000000000000000000000000000000 Matriz inversa 0000000000000000000000000000000000000000000
 
-    cout<<"\n**** Entre com valores da Matriz inversa ****\n\n";
+    std::cout<<"\n**** Entre com valores da Matriz inversa ****\n\n";
     
     for(int i=0; i<(ordem*ordem); i++){	
 
-		cout<<"  i["<<l<<c<<"] : ";
+		std::cout<<"  i["<<l<<c<<"] : ";
 
-		cin>>value;
+		std::cin>>value;
 		matriz_inversa[i] = value;
 		c++;
 		if((i+1)%ordem==0){ //resetar numero da coluna para 1 (estetico)
@@ -65,12 +64,12 @@ int main(){
     
 //000000000000000000000000000000000000 Matriz Y 00000000000000000000000000000000000000000000
     l=1;
-    cout<<"\n**** Entre com valores da Matriz Y ****\n\n";
+    std::cout<<"\n**** Entre com valores da Matriz Y ****\n\n";
     
     for(int i=0; i<(ordem); i++){	
 
-		cout<<"  y["<<l<<1<<"] : ";
-		cin>>value;
+		std::cout<<"  y["<<l<<1<<"] : ";
+		std::cin>>value;
 		matriz_pequena[i] = value;
 		l++;
 					
@@ -79,37 +78,37 @@ int main(){
 //00000000000000000000000000000000000000000000000 Mostrar na Tela 0000000000000000000000000000000000000000000000000000000
 system("cls");
 
-	cout <<"\n\n**** Matriz original ****\n" <<"\n  | ";
+	std::cout <<"\n\n**** Matriz original ****\n" <<"\n  | ";
 		
 	for(int i=0; i<(ordem*ordem); i++){	
-		cout<<setprecision(4)<<setw(4)<<matriz_original[i]<<" ";
+		std::cout<<std::setprecision(4)<<std::setw(4)<<matriz_original[i]<<" ";
 			if((i+1)%ordem==0){
-				cout<<"|\n";
+				std::cout<<"|\n";
 				if(i!=((ordem*ordem)-1)){
-				cout<<"  | ";
+				std::cout<<"  | ";
 				}
 			}
 		}
 
 	
-	cout <<"\n**** Matriz Inversa ****\n" <<"\n  | ";
+	std::cout <<"\n**** Matriz Inversa ****\n" <<"\n  | ";
 		
 	for(int i=0; i<(ordem*ordem); i++){	
-		cout<<setprecision(4)<<setw(5)<<matriz_inversa[i]<<" ";
+		std::cout<<std::setprecision(4)<<std::setw(5)<<matriz_inversa[i]<<" ";
 			if((i+1)%ordem==0){
-				cout<<"|\n";
+				std::cout<<"|\n";
 				if(i!=((ordem*ordem)-1)){
-				cout<<"  | ";
+				std::cout<<"  | ";
 				}
 			}
 		}
 
-	cout <<"\n**** Matriz Y ****\n";
+	std::cout <<"\n**** Matriz Y ****\n";
 
 	for(int i=0; i<(ordem); i++){
-        cout<<"\n  | ";
-		cout<<setprecision(4)<<setw(5)<<matriz_pequena[i];
-		cout<<"  | ";
+        std::cout<<"\n  | ";
+		std::cout<<std::setprecision(4)<<std::setw(5)<<matriz_pequena[i];
+		std::cout<<"  | ";
 			
 		}
 		
@@ -129,19 +128,19 @@ system("cls");
 
 //000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-    cout <<"\n\n****** Matriz Resultante ******\n";
+    std::cout <<"\n\n****** Matriz Resultante ******\n";
 
 	for(int i=0; i<(ordem); i++){
-        cout<<"\n  | ";
-		cout<<setw(3)<<"a"<<i;
-		cout<<"  | ";
+        std::cout<<"\n  | ";
+		std::cout<<std::setw(3)<<"a"<<i;
+		std::cout<<"  | ";
 
-        cout<<"  | ";
-		cout<<setprecision(4)<<setw(6)<<matriz_resultado[i];
-		cout<<"  | ";
+        std::cout<<"  | ";
+		std::cout<<std::setprecision(4)<<std::setw(6)<<matriz_resultado[i];
+		std::cout<<"  | ";
 			
 		}
-cout<<"\n\n\n";
+std::cout<<"\n\n\n";
 
 
 //000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
